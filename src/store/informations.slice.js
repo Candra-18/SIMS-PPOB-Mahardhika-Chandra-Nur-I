@@ -44,13 +44,12 @@ const informationSlice = createSlice({
   },
 });
 
-const baseUrl = `${process.env.REACT_APP_API_URL}`;
-const token = `Bearer ${JSON.parse(localStorage.getItem("tokenjwt"))}`;
-const headers = {
-  Authorization: token,
-};
-
 export const getBanner = createAsyncThunk("information/banner", async () => {
+  const baseUrl = `${process.env.REACT_APP_API_URL}`;
+  const token = `Bearer ${JSON.parse(localStorage.getItem("tokenjwt"))}`;
+  const headers = {
+    Authorization: token,
+  };
   try {
     const response = await axios.get(`${baseUrl}/banner`, { headers });
     return response.data.data;
@@ -61,6 +60,11 @@ export const getBanner = createAsyncThunk("information/banner", async () => {
 });
 
 export const getServices = createAsyncThunk("information/services", async () => {
+  const baseUrl = `${process.env.REACT_APP_API_URL}`;
+  const token = `Bearer ${JSON.parse(localStorage.getItem("tokenjwt"))}`;
+  const headers = {
+    Authorization: token,
+  };
   try {
     const response = await axios.get(`${baseUrl}/services`, { headers });
     return response.data.data;
