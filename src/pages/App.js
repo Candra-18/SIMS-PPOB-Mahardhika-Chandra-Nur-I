@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import "./App.css";
 import Home from "./Home";
 import Login from "./Login";
@@ -15,27 +15,30 @@ import { userActions } from "../store";
 import { history } from "services";
 
 function App() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (window.location.pathname == "/Registrasi") {
-        navigate("/Registrasi");
-      } else {
-        try {
-          const response = await dispatch(userActions.getById());
-          if (response.payload.message != "Sukses") {
-            navigate("/Login");
-          }
-        } catch (error) {
-          navigate("/Login");
-        }
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (window.location.pathname == "/Registrasi") {
+  //       navigate("/Registrasi");
+  //     } else {
+  //       try {
+  //         const response = await dispatch(userActions.getById());
+  //         if (response.payload.message != "Sukses") {
+  //           navigate("/Login");
+  //         }
+  //       } catch (error) {
+  //         navigate("/Login");
+  //       }
+  //     }
+  //   };
 
-    fetchData();
-  }, [dispatch]);
+  //   fetchData();
+  // }, [dispatch]);
+
+  history.navigate = useNavigate();
+  history.location = useLocation();
 
   return (
     <>

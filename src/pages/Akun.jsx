@@ -12,7 +12,7 @@ const Akun = () => {
 
   const handleLogOut = () => {
     dispatch(authActions.logOut());
-    navigate("/Login")
+
   };
 
   useEffect(() => {

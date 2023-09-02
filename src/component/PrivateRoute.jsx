@@ -6,13 +6,11 @@ import { history } from "services";
 export { PrivateRoute };
 
 function PrivateRoute() {
-  const auth = useSelector((x) => x.auth.value.token);
+  const auth = useSelector((x) => x.auth?.value?.token);
+  const token = localStorage.getItem("tokenjwt");
 
-  if (!auth) {
-    // not logged in so redirect to login page with the return url
+  if (!token) {
     return <Navigate to="/login" state={{ from: history.location }} />;
   }
-
-  // authorized so return outlet for child routes
   return <Outlet />;
 }
