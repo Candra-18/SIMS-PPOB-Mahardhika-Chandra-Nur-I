@@ -55,16 +55,15 @@ const usersSlice = createSlice({
   },
 });
 
-const baseUrl = `${process.env.REACT_APP_API_URL}`;
-const token = `Bearer ${JSON.parse(localStorage.getItem("tokenjwt"))}`;
-const headers = {
-  Authorization: token,
-};
-
 export const getById = createAsyncThunk("users/profile", async () => {
+  const baseUrl = `${process.env.REACT_APP_API_URL}`;
+  const token = `Bearer ${JSON.parse(localStorage.getItem("tokenjwt"))}`;
+  const headers = {
+    Authorization: token,
+  };
   try {
     const response = await axios.get(`${baseUrl}/profile`, { headers });
-    console.log(response.data)
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log(error);
@@ -73,6 +72,11 @@ export const getById = createAsyncThunk("users/profile", async () => {
 });
 
 export const getBalance = createAsyncThunk("users/balance", async () => {
+  const baseUrl = `${process.env.REACT_APP_API_URL}`;
+  const token = `Bearer ${JSON.parse(localStorage.getItem("tokenjwt"))}`;
+  const headers = {
+    Authorization: token,
+  };
   try {
     const response = await axios.get(`${baseUrl}/balance`, { headers });
     return response.data.data.balance;
@@ -83,6 +87,11 @@ export const getBalance = createAsyncThunk("users/balance", async () => {
 });
 
 export const updateProfile = createAsyncThunk("users/updateProfile", async (formData) => {
+  const baseUrl = `${process.env.REACT_APP_API_URL}`;
+  const token = `Bearer ${JSON.parse(localStorage.getItem("tokenjwt"))}`;
+  const headers = {
+    Authorization: token,
+  };
   try {
     const response = await axios.put(`${baseUrl}/profile/update`, formData, { headers });
     return response.status;
@@ -93,6 +102,11 @@ export const updateProfile = createAsyncThunk("users/updateProfile", async (form
 });
 
 export const updateImages = createAsyncThunk("users/updateImage", async (formData) => {
+  const baseUrl = `${process.env.REACT_APP_API_URL}`;
+  const token = `Bearer ${JSON.parse(localStorage.getItem("tokenjwt"))}`;
+  const headers = {
+    Authorization: token,
+  };
   try {
     const imageFormData = new FormData();
     imageFormData.append("file", formData);

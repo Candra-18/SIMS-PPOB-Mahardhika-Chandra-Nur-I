@@ -48,9 +48,9 @@ function createExtraActions() {
         const user = await axios.post(`${baseUrl}/login`, { email: username, password });
         console.log("masukk");
         console.log(user);
+        localStorage.setItem("tokenjwt", JSON.stringify(user.data.data.token));
         dispatch(authActions.setAuth(user.data.data));
         console.log("ini dataku", user.data.data.token);
-        localStorage.setItem("tokenjwt", JSON.stringify(user.data.data.token));
         const { from } = history.location.state || { from: { pathname: "/" } };
         history.navigate(from);
       } catch (error) {
